@@ -48,6 +48,18 @@
 
 
 /* Responsive Typography */
+@media screen and (max-width: 1208px) {
+    :root {
+        --big-font-size: 6.25rem;
+        --h1-font-size: 2.75rem;
+        --h2-font-size: 2rem;
+        --h3-font-size: 1.25rem;
+        --larger-font-size: 1.125rem;
+        --large-font-size: 1rem;
+        --normal-font-size: 0.938rem;
+        --small-font-size: 0.813rem;
+    }
+}
 
 /* =============== BASE =============== */
 * {
@@ -369,7 +381,8 @@ img {
     object-fit: contain;
 } */
 .about-img-wrapper {
-    width: 22rem;
+    /* width: 22rem; */
+    width: clamp(11rem, 6rem + 22.8571vw, 22rem);
     background: var(--second-gradient);
     border-radius: 49% 51% 32% 68% / 53% 44% 56% 47% ;
     overflow: hidden;
@@ -850,4 +863,84 @@ img {
 
 /* =============== BREAKPOINTES =============== */
 
+/* Laptops (1366px and below) */
+@media screen and (max-width: 1366px) {
+    .container {
+        max-width: 98vw;
+    }
+    .home-img-wrapper,
+    .about-img-wrapper {
+        width: 18rem;
+    }
+}
 
+/* Tablets and small laptops (992px and below) */
+@media screen and (max-width: 992px) {
+    .section {
+        margin-inline: 5rem;
+    }
+    .container {
+        max-width: 96vw;
+    }
+    .home-container,
+    .about-container,
+    .experience-container,
+    .projects-container,
+    .contact-container {
+        grid-template-columns: 1fr !important;
+        padding-top: 2rem;
+    }
+    .about-img-wrapper,
+    .home-img-wrapper {
+        margin: 0 auto 2rem auto;
+        width: 14rem;
+    }
+    .education.section {
+        margin-inline: 0rem;
+    }
+}
+
+/* Tablets (768px and below) */
+@media screen and (max-width: 768px) {
+    :root {
+        --h1-font-size: 2rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1rem;
+        --larger-font-size: 1rem;
+        --large-font-size: 0.938rem;
+        --normal-font-size: 0.875rem;
+        --small-font-size: 0.75rem;
+    }
+    .container {
+        padding-inline: 2rem;
+    }
+    .section {
+        padding-block: 3rem 2rem;
+        margin-inline: 2rem;
+    }
+    .education.section {
+        margin-inline: 0rem;
+    }
+}
+
+/* Mobiles (576px and below) */
+@media screen and (max-width: 576px) {
+    .section {
+        margin-inline: 0rem;
+    }
+    .container {
+        max-width: 100vw;
+    }
+    .section-title {
+        font-size: var(--h2-font-size);
+        margin-bottom: 2rem;
+        
+    }
+    .home-img-wrapper,
+    .about-img-wrapper {
+        width: 9rem;
+    }
+    /* .education.section {
+        margin-inline: 0rem;
+    } */
+}
