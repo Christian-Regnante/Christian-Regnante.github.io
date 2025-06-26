@@ -1,4 +1,17 @@
 // =============== MENU SHOW & HIDDEN ===============
+const navMenu_holder = document.querySelector('.nav-menu')
+const menuClose = document.querySelector('.menu-close')
+const menuBar = document.querySelector('.menu-bar')
+
+menuBar.addEventListener('click', () => {
+    menuBar.classList.add('menu')
+    navMenu_holder.classList.add('show-menu')
+})
+
+menuClose.addEventListener('click', () => {
+    menuBar.classList.remove('menu')
+    navMenu_holder.classList.remove('show-menu')
+})
 
 // ===== MENU SHOW =====
 // Validate if constant exists
