@@ -381,7 +381,6 @@ img {
     object-fit: contain;
 } */
 .about-img-wrapper {
-    /* width: 22rem; */
     width: clamp(11rem, 6rem + 22.8571vw, 22rem);
     background: var(--second-gradient);
     border-radius: 49% 51% 32% 68% / 53% 44% 56% 47% ;
@@ -865,8 +864,13 @@ img {
 
 /* Laptops (1366px and below) */
 @media screen and (max-width: 1366px) {
+    .section {
+    padding-block: 6rem 4rem;
+    }
     .container {
-        max-width: 98vw;
+        max-width: 1120px;
+        margin-inline: auto;
+        padding-inline: 1.25rem;
     }
     .home-img-wrapper,
     .about-img-wrapper {
@@ -892,8 +896,7 @@ img {
     }
     .about-img-wrapper,
     .home-img-wrapper {
-        margin: 0 auto 2rem auto;
-        width: 14rem;
+        width: clamp(11rem, 6rem + 22.8571vw, 22rem);
     }
     .education.section {
         margin-inline: 0rem;
