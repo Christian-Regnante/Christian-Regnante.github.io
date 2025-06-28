@@ -128,7 +128,7 @@ for (let index = 0; index < 80; index++) {
     dots.push({
         x:  Math.floor(Math.random() * canvas.width),
         y:  Math.floor(Math.random() * canvas.height),
-        size: Math.random() * 3 + 5,
+        size: Math.random() * 1.6 + 1.6,
         color: arrayColors[Math.floor(Math.random()* 5)]
     });
 }
