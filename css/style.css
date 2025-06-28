@@ -1256,7 +1256,6 @@ section.education {
             filter: blur(0);
         }
     }
-    }
     .nav {
         height: 3.75rem;
     }
@@ -1322,7 +1321,7 @@ section.education {
     p {
         font-size: clamp(0.595rem, 0.4109rem + 0.8416vw, 1rem);
     }
-
+}
 /* Mobiles (576px and below) */
 @media screen and (max-width: 576px) {
     @keyframes showCards {
