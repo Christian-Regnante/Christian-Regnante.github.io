@@ -2,3 +2,6 @@
 assets/images/usefull_Images/
 
 carousel.html
+# Ignore all files in the sample folder
+.*
+!.gitignore

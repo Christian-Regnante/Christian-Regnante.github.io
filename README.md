@@ -9,7 +9,7 @@ A modern, responsive personal portfolio website to showcase skills, experience, 
 
 - **Responsive Design:** Works on all devices (desktop, tablet, mobile)
 - **Custom Scrollbar:** Stylish, theme-matching scrollbar for modern browsers
-<!-- - **Animated Sections:** Smooth scroll-triggered animations (GSAP + ScrollTrigger) -->
+- **Animated Sections:** Smooth scroll-triggered animations (with CSS animation's timeline & range)
 <!-- - **Dark/Light Theme:** Toggle between dark and light modes -->
 - **Header & Navigation:**
   - Fixed header with blur on scroll
@@ -30,7 +30,7 @@ A modern, responsive personal portfolio website to showcase skills, experience, 
 - **HTML5**
 - **CSS3** (with CSS variables)
 - **JavaScript (ES6+)**
-<!-- - **GSAP & ScrollTrigger** -->
+- **CSS scroll trigger animations**
 - **RemixIcon**
 - **Google Fonts**
 
@@ -42,12 +42,13 @@ A modern, responsive personal portfolio website to showcase skills, experience, 
 Christian-Regnante.github.io/
 │
 ├── assets/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   └── main.js
-│   └── img/
-│       └── ... (project images)
+│   ├── img/
+│   │   └── ... (project images)
+│
+├── css/
+│   ├── style.css
+├── js/
+│   ├── main.js
 │
 └── index.html
 ```
@@ -74,4 +75,4 @@ This project is for personal and educational use.
 
 ---
 
-**Developed by Regnante-Christian
+**Developed by Regnante Christian
