@@ -44,6 +44,7 @@
     --font-medium: 500;
     --font-semi-bold: 600;
     --font-bold: 700;
+
 }
 
 
@@ -109,11 +110,12 @@ body {
 }
 section.home{cursor: url('../assets/images/cursor.png') 0 0, default;}
 section.about{cursor: url('../assets/images/shuriken-blue.png') 0 0, default;}
-section.education{cursor: url('../assets/images/kunai-blue.png') 0 0, default;}
+section.education{cursor: url('../assets/images/shuriken.png') 0 0, default;}
+section.skills{cursor: url('../assets/images/shuriken-blue.png') 0 0, default;}
 section.projects{cursor: url('../assets/images/cursor.png') 0 0, default;}
-section.experience{cursor: url('../assets/images/shuriken.png') 0 0, default;}
-section.contact{cursor: url('../assets/images/shuriken-blue.png') 0 0, default;}
-section.footer{cursor: url('../assets/images/shuriken-blue.png') 0 0, default;}
+section.experience{cursor: url('../assets/images/shuriken-blue.png') 0 0, default;}
+section.contact{cursor: url('../assets/images/shuriken.png') 0 0, default;}
+footer.footer{cursor: url('../assets/images/shuriken.png') 0 0, default;}
 body,
 button,
 input,
@@ -127,6 +129,7 @@ button:hover {
 body {
     background-color: var(--body-color);
     color: var(--text-color);
+    overflow-x: hidden;
 }
 
 h1,
@@ -199,6 +202,20 @@ img {
     text-align: center;
     font-size: var(--h2-font-size);
     margin-bottom: 4.25rem;
+}
+
+
+/* =============== SCROLL TRIGGER =============== */
+@keyframes showAppear {
+    from {
+        opacity: 0;
+        scale: 0.5;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
 }
 
 
@@ -300,12 +317,31 @@ img {
     z-index: -1000;
     height: 100%;
 }
+/* =============== CANVAS =============== */
+
+
 
 /* =============== HOME =============== */
+section.home {
+    position: relative;
+}
+
+.home #dotsCanvas {
+    position: absolute;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 105%;
+    z-index: 1000;
+    pointer-events: none;
+}
+
 .home-container {
     grid-template-columns: 10fr 1fr;
     align-items: center;
     padding-top: 5rem;
+    animation: showAppear 1S linear;
 }
 
 .home-title {
@@ -350,6 +386,29 @@ img {
 }
 
 /* =============== ABOUT =============== */
+section.about {
+    animation: showAppear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+.about-data {
+    animation: dataAppear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+@keyframes dataAppear {
+    from {
+        transform: translate(30%, 30%) scale(0.5);
+        filter: blur(15px);
+    }
+    to {
+        transform: translate(0) scale(1);
+        filter: blur(0);
+    }
+}
+
 .about-container {
     grid-template-columns: 2fr 3fr;
     align-items: center;
@@ -423,6 +482,26 @@ img {
 
 
 /* =============== SERVICES(-- EXPERIENCE --) =============== */
+@keyframes expCard {
+    from {
+        transform: scale(0);
+        opacity: 0;
+        transform: translate(-100%);
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+section.experience {
+    animation: showAppear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
 .experience-container {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.75rem;
@@ -433,6 +512,9 @@ img {
     padding: 2rem;
     border-radius: 1rem;
     transition: all .5s linear;
+    animation: expCard linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
 }
 
 .experience-card:hover {
@@ -471,9 +553,130 @@ img {
 }
 
 /* =============== SKILLS =============== */
+section.skills {
+    animation: skillsAppear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+}
+@keyframes skillsAppear {
+    from {
+        opacity: 0;
+        transform: translatex(100%) scale(0.3);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+.skills-container {
+    width: 80%;
+    overflow-x: hidden;
+    height: calc(200px * 2);
+    margin: 0 auto;
+    mask-image: linear-gradient(
+        to right, 
+        rgba(0, 0, 0, 0), 
+        rgba(0, 0, 0, 1) 10%, 
+        rgba(0, 0, 0, 1) 90%, 
+        rgba(0, 0, 0, 0));
+}
+.container-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    position: relative;
+}
+.skills-item {
+    position: absolute;
+    left: max(calc(150px * 16), 100%);
+    width: 150px;
+    height: 180px;
+    background-color: aliceblue;
+    background-color: var(--container-color);
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+    animation: slide 15s linear infinite;
+    animation-delay: calc( 15s / var(--quantity) * (var(--skill-num) - 1) * -1);
+    transform-style: preserve-3d;
+    -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
+    transition: filter .5s;
+}
+
+.skills-container:hover .skills-item {
+    animation-play-state: paused !important;
+    filter: blur(2px);
+}
+.skills-container:hover .skills-item:hover {
+    transform: scale3d(1.01, 1.01, 1);
+    filter: blur(0);
+}
+
+.content-wrapper {
+    margin-top: 1rem;
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+@keyframes slide {
+    to {
+        left: -150px;
+    }
+}
+
+.skills-item img {
+    width: 80px;
+}
 
 
 /* =============== EDUCATION =============== */
+section.education {
+    animation: education linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+@keyframes education {
+    from {
+        transform: scale(0.2);
+        opacity: 0.5;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fromRight {
+    from {
+        transform: translateX(100%) scale(0.8);
+        opacity: 0.8;
+        filter: blur(15px);
+    }
+    to {
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes fromLeft {
+    from {
+        transform: translateX(-100%) scale(0.8);
+        opacity: 0.8;
+        filter: blur(15px);
+    }
+    to {
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
 .education-container {
     grid-template-columns: 0.7fr;
     justify-content: center;
@@ -489,10 +692,16 @@ img {
 
 .education-right {
     order: 2;
+    animation: fromRight linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
 }
 
 .education-left {
     text-align: right;
+    animation: fromLeft  linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
 }
 
 .education-icon {
@@ -529,16 +738,38 @@ img {
 .education-container::after {
     width: 2px;
     height: 98%;
+    animation: lineHeight  linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
 }
 
 .education-item::after {
     width: 16px;
     height: 4px;
     z-index: 1;
+    animation: lineWidth  linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+@keyframes lineHeight {
+    from {
+        transform: translateY(-100%) scale(0.2);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
 }
 
 
 /* =============== PORTFOLIO(-- PROJECTS --) =============== */
+/* section.projects {
+    animation: showAppear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+} */
 .projects-navList {
     display: flex;
     justify-content: center;
@@ -593,6 +824,22 @@ img {
     padding: 1rem 1.5rem;
     border-radius: 1rem;
     z-index: -20;
+    animation: showCards linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+@keyframes showCards {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+        filter: blur(15px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
 }
 
 .projectImg-container {
@@ -743,6 +990,44 @@ img {
 }
 
 /* =============== CONTACT =============== */
+.contact-group {
+    animation: showContact-group linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+.contact-form {
+    animation: showContact-form linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 45%;
+}
+
+@keyframes showContact-group {
+    from {
+        transform: translateX(200%) scale(0);
+        opacity: .5;
+        filter: blur(20px);
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes showContact-form {
+    from {
+        transform: translateX(-200%) scale(0);
+        opacity: .5;
+        filter: blur(20px);
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
 .contact {
     padding-bottom: 8rem;
 }
