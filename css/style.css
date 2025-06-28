@@ -400,11 +400,9 @@ section.about {
 
 @keyframes dataAppear {
     from {
-        transform: translate(30%, 30%) scale(0.5);
-        filter: blur(15px);
+        filter: blur(5px);
     }
     to {
-        transform: translate(0) scale(1);
         filter: blur(0);
     }
 }
@@ -445,11 +443,6 @@ section.about {
     background-repeat: no-repeat;
 }
 
-/* .about-img {
-    width: 25rem;
-    height: 25rem;
-    object-fit: contain;
-} */
 .about-img-wrapper {
     width: clamp(11rem, 6rem + 22.8571vw, 22rem);
     background: var(--second-gradient);
@@ -556,12 +549,12 @@ section.experience {
 section.skills {
     animation: skillsAppear linear;
     animation-timeline: view();
-    animation-range: entry 0% cover 25%;
+    animation-range: entry 0% cover 35%;
 }
 @keyframes skillsAppear {
     from {
         opacity: 0;
-        transform: translatex(100%) scale(0.3);
+        transform: translateY(40%) scale(0);
     }
 
     to {
@@ -686,7 +679,6 @@ section.education {
 .education-item {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 4rem;
-    /* background-color: blue; */
     padding: 2rem 1rem;
 }
 
@@ -765,11 +757,6 @@ section.education {
 
 
 /* =============== PORTFOLIO(-- PROJECTS --) =============== */
-/* section.projects {
-    animation: showAppear linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 30%;
-} */
 .projects-navList {
     display: flex;
     justify-content: center;
@@ -826,14 +813,14 @@ section.education {
     z-index: -20;
     animation: showCards linear;
     animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+    animation-range: entry 0% cover 30%;
 }
 
 @keyframes showCards {
     from {
         opacity: 0;
         transform: scale(0.9);
-        filter: blur(15px);
+        filter: blur(10px);
     }
     to {
         opacity: 1;
@@ -1004,7 +991,7 @@ section.education {
 
 @keyframes showContact-group {
     from {
-        transform: translateX(200%) scale(0);
+        transform: translateX(400%) scale(0);
         opacity: .5;
         filter: blur(20px);
     }
@@ -1233,6 +1220,18 @@ section.education {
         --normal-font-size: 0.875rem;
         --small-font-size: 0.75rem;
     }
+    @keyframes showContact-group {
+        from {
+            transform: translate(80%, -50%) scale(0.7);
+            opacity: .5;
+            filter: blur(20px);
+        }
+        to {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+            filter: blur(0);
+        }
+    }
     .nav {
         height: 3.75rem;
     }
@@ -1334,4 +1333,84 @@ section.education {
     .projects-container {
         padding-inline: clamp(0.75rem, -4.6935rem + 23.2258vw, 3rem);
     }
+
+    @keyframes dataAppear {
+        from {
+            filter: blur(3px);
+        }
+        to {
+            filter: blur(0);
+        }
+    }
+
+    @keyframes showAppear {
+        from {
+            opacity: 0.8;
+            scale: 0.8;
+        }
+
+        to {
+            opacity: 1;
+            scale: 1;
+        }
+    }
+
+    @keyframes skillsAppear {
+        from {
+            opacity: 0;
+            transform: translateY(0) scale(1);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes education {
+        from {
+            transform: scale(0.9);
+            opacity: 1;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fromRight {
+        from {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+            filter: blur(8px);
+        }
+        to {
+            transform: translateX(0);
+            filter: blur(0);
+        }
+    }
+
+    @keyframes fromLeft {
+        from {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+            filter: blur(8px);
+        }
+        to {
+            transform: translateX(0);
+            filter: blur(0);
+        }
+    }
+
+    @keyframes lineHeight {
+        from {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+    }
+
 }
