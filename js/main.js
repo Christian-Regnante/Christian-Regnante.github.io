@@ -123,13 +123,14 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 const ctx = canvas.getContext('2d');
 const dots = [];
-const arrayColors = ['#0d1136', '#9cb1c8', '#160435', '#d9d9e7', '#3436d2'];
+// const arrayColors = ['#0d1136', '#9cb1c8', '#160435', '#d9d9e7', '#fff', '#3436d2', '#000'];
+const arrayColors = ['#3340b4', '#1089e6', '#6e6e72', '#6200ff', '#4757e7', '#0a0316', '#b6cde7'];
 for (let index = 0; index < 80; index++) {
     dots.push({
         x:  Math.floor(Math.random() * canvas.width),
         y:  Math.floor(Math.random() * canvas.height),
-        size: Math.random() * 1.6 + 1.6,
-        color: arrayColors[Math.floor(Math.random()* 5)]
+        size: Math.random() * 2 + 2,
+        color: arrayColors[Math.floor(Math.random() * 7)]
     });
 }
 const drawDots = () => {
@@ -152,7 +153,8 @@ banner.addEventListener('mousemove', (event) => {
         let distance = Math.sqrt((mouse.x - dot.x) ** 2 + (mouse.y - dot.y) ** 2);
         if(distance < 300){
             ctx.strokeStyle = dot.color;
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 2;
+            ctx.globalAlpha = .2;
             ctx.beginPath();
             ctx.moveTo(dot.x, dot.y);
             ctx.lineTo(mouse.x, mouse.y);
@@ -174,8 +176,8 @@ window.addEventListener('resize', () => {
         dots.push({
             x:  Math.floor(Math.random() * canvas.width),
             y:  Math.floor(Math.random() * canvas.height),
-            size: Math.random() * 3 + 5,
-            color: arrayColors[Math.floor(Math.random()* 5)]
+            size: Math.random() * 2 + 2,
+            color: arrayColors[Math.floor(Math.random()* 7)]
         });
     }
     drawDots();
