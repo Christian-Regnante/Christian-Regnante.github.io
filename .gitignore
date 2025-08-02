@@ -5,3 +5,9 @@ carousel.html
 # Ignore all files in the sample folder
 .*
 !.gitignore
+
+repos.html
+sample.html
+tab2-render-md.html
+tab2.html
+tab.html
